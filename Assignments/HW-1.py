@@ -6,8 +6,8 @@ def double(y: int) -> int:
 
 
 def greet(x: str) -> str:
-    for _ in range(10):
-        print("hi")
+    for _ in range(0, 10):
+        print(x)
     return f"Hello, {x}"
 
 
