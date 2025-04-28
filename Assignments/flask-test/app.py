@@ -15,7 +15,7 @@ def submit_get():
     return f"Hello from GET, {name}!"
 
 
-@app.route('/submit', method=["POST"])
+@app.route('/submit', methods=["POST"])
 def submit():
     # TODO: Get form data from request.form
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
@@ -25,7 +25,7 @@ def submit():
     with open(filepath, 'a') as w:
         w.write(u_input)
 
-    return redirect("/messages")
+    return None#redirect("/messages")
 
 
 @app.route('/messages', method=["GET"])
