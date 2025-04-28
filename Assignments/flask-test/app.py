@@ -20,11 +20,13 @@ def submit():
     # TODO: Get form data from request.form
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
     name = None
-    u_input = request.form['name']
+    message = None
+    name = request.form['name']
+    message = request.form['message']
     with open(filepath, 'a') as w:
-        w.write(u_input + '\n')
+        w.write(name + ': ' + message + '\n')
 
-    return redirect("/")
+    return redirect("/messages")
 
 
 @app.route('/messages', methods=["GET"])
@@ -32,8 +34,7 @@ def messages():
     # TODO: Read file content and return as plain text or HTML
     with open(filepath, 'r') as r:
         string = r.read()
-        print(string)
-    return "All submitted messages go here"
+    return string
 
 
 if __name__ == '__main__':
