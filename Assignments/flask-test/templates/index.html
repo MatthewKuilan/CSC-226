@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Flask test</title>
+        <title>Submit a Message</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
-        <h1>test test</h1>
-        
+        <div>
+            <h2>Submit a Message</h2>
+            <form method="POST" action="/submit">
+                Name: <input type="text" id="Uname" name="name"><br><br>
+                Message: <input type="text" id="uMess" message="message"><br><br>
+                <button type="submit" value="submit"></button>
+            </form>
+            <p>See all messages at <a href='/messages'> </a> /messages</p>
+        </div>
         <div>
             <form action="GET">
                 <input type="button" class="btn" id="myButton">
                 <script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
-            </form>
-        </div>
-        <div>
-            <form method="POST" action="/submit">
-                <label for="Uname">Your name:</label>
-                <input type="text" id="Uname" name="name">
-                <button type="submit">Submit</button>
             </form>
         </div>
     </body>

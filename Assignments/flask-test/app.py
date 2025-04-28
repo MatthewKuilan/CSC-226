@@ -30,7 +30,8 @@ def submit():
 
 @app.route('/messages', methods=["GET"])
 def messages():
-    return None
+    # TODO: Read file content and return as plain text or HTML
+    return "All submitted messages go here"
 
 
 if __name__ == '__main__':
