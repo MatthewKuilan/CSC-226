@@ -13,8 +13,6 @@ def home():
 def submit():
     # TODO: Get form data from request.form
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
-    # name = None
-    # message = None
     name = request.form['name']
     message = request.form['message']
     with open(filepath, 'a') as w:
