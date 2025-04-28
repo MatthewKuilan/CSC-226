@@ -4,14 +4,3 @@ body {
     margin: 0;
     height: 100vh;
   }
-  
-  h1 {
-    color: rgba(211, 211, 236, 0.521);
-  }
-  
-  .btn {
-    padding: 10px;
-    background-color: lightgray;
-    border: none;
-    cursor: pointer;
-  }
