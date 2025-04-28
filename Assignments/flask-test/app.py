@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect
-import os
 
 app = Flask(__name__)
+filepath = "C:\\Users\\matthew.kuilan\\Documents\\Names.txt"
 
 
 @app.route('/', methods=["GET"])
@@ -21,7 +21,6 @@ def submit():
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
     name = None
     u_input = request.form['name']
-    filepath = "C:\\Users\\matthew.kuilan\\Documents\\Names.txt"
     with open(filepath, 'a') as w:
         w.write(u_input + '\n')
 
@@ -31,6 +30,9 @@ def submit():
 @app.route('/messages', methods=["GET"])
 def messages():
     # TODO: Read file content and return as plain text or HTML
+    with open(filepath, 'r') as r:
+        string = r.read()
+        print(string)
     return "All submitted messages go here"
 
 
