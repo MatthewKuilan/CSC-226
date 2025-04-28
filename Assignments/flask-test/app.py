@@ -28,7 +28,7 @@ def submit():
     return None#redirect("/messages")
 
 
-@app.route('/messages', method=["GET"])
+@app.route('/messages', methods=["GET"])
 def messages():
     return None
 
