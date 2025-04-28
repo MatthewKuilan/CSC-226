@@ -9,16 +9,10 @@
             <h2>Submit a Message</h2>
             <form method="POST" action="/submit">
                 Name: <input type="text" id="uName" name="name"><br><br>
-                Message: <input type="text" id="uMess" message="message"><br><br>
-                <button type="submit" value="Submit"></button>
+                Message: <input type="text" id="uMess" name="message"><br><br>
+                <button type="submit">Submit</button>
             </form>
             <p>See all messages at <a href='/messages'> </a> /messages</p>
-        </div>
-        <div>
-            <form action="GET">
-                <input type="button" class="btn" id="myButton">
-                <script src="{{ url_for('static', filename='js/scripts.js')}}"></script>
-            </form>
         </div>
     </body>
 </html>

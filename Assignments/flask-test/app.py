@@ -9,18 +9,12 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/submit-get/')
-def submit_get():
-    name = request.args.get('username')
-    return f"Hello from GET, {name}!"
-
-
 @app.route('/submit', methods=["POST"])
 def submit():
     # TODO: Get form data from request.form
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
-    name = None
-    message = None
+    # name = None
+    # message = None
     name = request.form['name']
     message = request.form['message']
     with open(filepath, 'a') as w:
@@ -34,7 +28,7 @@ def messages():
     # TODO: Read file content and return as plain text or HTML
     with open(filepath, 'r') as r:
         string = r.read()
-    return string
+    return f"<pre>{string}</pre>"
 
 
 if __name__ == '__main__':
