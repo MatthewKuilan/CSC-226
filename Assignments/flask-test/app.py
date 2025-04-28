@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import os
 
 app = Flask(__name__)
@@ -23,9 +23,9 @@ def submit():
     u_input = request.form['name']
     filepath = "C:\\Users\\matthew.kuilan\\Documents\\Names.txt"
     with open(filepath, 'a') as w:
-        w.write(u_input)
+        w.write(u_input + '\n')
 
-    return None#redirect("/messages")
+    return redirect("/")
 
 
 @app.route('/messages', methods=["GET"])
