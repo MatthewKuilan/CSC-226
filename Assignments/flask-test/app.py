@@ -14,9 +14,9 @@ def submit():
     # TODO: Get form data from request.form
     # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
     name = request.form['name']
-    message = request.form['message']
+    email = request.form['email']
     with open(filepath, 'a') as w:
-        w.write(name + ': ' + message + '\n')
+        w.write(name + ': ' + email + '\n')
 
     return redirect("/messages")
 
