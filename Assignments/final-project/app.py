@@ -1,8 +1,13 @@
 from flask import Flask, request, render_template, redirect
+import sqlite3
 
 app = Flask(__name__)
 filepath = "C:\\Users\\matthew.kuilan\\Documents\\Names.txt"
 
+def db_connection():
+    conn = sqlite3.connect("C:\\Users\\Matthew\\Desktop\\fourthdb.db")
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route('/', methods=["GET"])
 def home():
