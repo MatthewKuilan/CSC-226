@@ -11,9 +11,8 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "path to db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydb.db"
 db.init_app(app)
-
 from models import User
 
 @app.route("/")
