@@ -36,5 +36,16 @@ def user_detail(id):
     user = db.get_or_404(User, id)
     return render_template("user/detail.html", user=user)
 
+@app.route("/user/<int:id>/delete", methods=["GET", "POST"])
+def user_delete(id):
+    user = db.get_or_404(user, id)
+
+    if request.method == "POST":
+        db.session.delete(user)
+        db.session.commit()
+        return redirect(url_for("user_list"))
+    
+    return render_template(user/delete.html, user=user)
+
 with app.app_context():
     db.create_all()
