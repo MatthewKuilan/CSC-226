@@ -1,14 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
-
-# base for new mappings(key value pairs) makes new declared bases
-# compatible with type checkers
-class Base(DeclarativeBase):
-    pass
-
-# initailize db object 
-db = SQLAlchemy(model_class=Base)
+from extensions import db
+from models import User
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydb.db"
@@ -43,8 +35,6 @@ def create_user():
 def user_detail(id):
     user = db.get_or_404(User, id)
     return render_template("user/detail.html", user=user)
-
-
 
 with app.app_context():
     db.create_all()
