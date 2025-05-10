@@ -1,19 +1,28 @@
-'temporary html for test'
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Submit a Message</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    </head>
-    <body>
-        <div>
-            <h2>Submit a Message</h2>
-            <form method="POST" action="/submit">
-                Name: <input type="text" id="uName" name="name"><br><br>
-                Email: <input type="email" id="uEmail" name="email"><br><br>
-                <button type="submit">Submit</button>
-            </form>
-            <p>See all messages at <a href='/messages'> </a> /messages</p>
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+    <h1>All Users</h1>
+
+    <a href="{{ url_for('create_user') }}">Create New User</a>
+    <br><br>
+
+    {% if users %}
+        <ul>
+        {% for user in users %}
+            <li>
+                <a href="{{ url_for('user_detail', id=user.id) }}">
+                    {{ user.username }} ({{ user.email }})
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No users found.</p>
+    {% endif %}
+
+</body>
 </html>

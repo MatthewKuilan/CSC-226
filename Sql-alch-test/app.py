@@ -45,7 +45,8 @@ def user_delete(id):
         db.session.commit()
         return redirect(url_for("user_list"))
     
-    return render_template(user/delete.html, user=user)
+    return render_template("/index.html")
+    # return render_template(user/delete.html, user=user)
 
 with app.app_context():
     db.create_all()

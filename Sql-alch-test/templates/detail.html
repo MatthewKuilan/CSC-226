@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail</title>
+</head>
+<body>
+    <h1>User Detail</h1>
+    
+    <ul>
+        <li><strong>ID:</strong> {{ user.id }}</li>
+        <li><strong>Username:</strong> {{ user.username }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+    </ul>
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
