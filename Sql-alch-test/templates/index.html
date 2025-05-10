@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>SQLAlchemy users test</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    </head>
-    <body>
-        <div>
-            <h2>Create A User</h2>
-            <form method="post" action="/users/create">
-                Name: <input type="text" id="uName" name="username"><br><br>
-                Email: <input type="email" id="uEmail" name="email"><br><br>
-                Find Your House: <input type="radio" id="uRadio1" name="choices"><br><br>
-                                 <input type="radio" name="choices" id="uRadio2"><br><br>
-                <button type="submit">Submit</button>
-            </form>
-            <p>See all messages at <a href='/messages'> </a> /messages</p>
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - User App</title>
+</head>
+<body>
+    <h1>Welcome to the User App</h1>
+    <p>This is the homepage.</p>
+
+    <a href="{{ url_for('create_user') }}">Create a New User</a>
+</body>
 </html>
