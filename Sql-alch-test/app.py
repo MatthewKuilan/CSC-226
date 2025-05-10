@@ -18,10 +18,11 @@ def user_list():
 @app.route("/users/create", methods=["GET", "POST"])
 def create_user():
     if request.method == "POST":
+        print(request.form)
         user = User(
             username=request.form["username"],
             email=request.form["email"],
-            radio=request.form["choice"]
+            choice=request.form["choice"]
         )
         db.session.add(user)
         db.session.commit()
