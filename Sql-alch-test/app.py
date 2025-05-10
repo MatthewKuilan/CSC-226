@@ -8,7 +8,7 @@ db.init_app(app)
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template('user/create.html')
 
 @app.route("/users")
 def user_list():
