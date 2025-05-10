@@ -6,8 +6,6 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///mydb.db"
 db.init_app(app)
 
-from models import User
-
 @app.route("/")
 def home():
     return render_template('index.html')
@@ -15,7 +13,7 @@ def home():
 @app.route("/users")
 def user_list():
     users = db.session.execute(db.select(User).order_by(User.username)).scalars()
-    return render_template('user/list.html')
+    return render_template('user/list.html', users=users)
 
 @app.route("/users/create", methods=["GET", "POST"])
 def create_user():
@@ -38,7 +36,7 @@ def user_detail(id):
 
 @app.route("/user/<int:id>/delete", methods=["GET", "POST"])
 def user_delete(id):
-    user = db.get_or_404(user, id)
+    user = db.get_or_404(User, id)
 
     if request.method == "POST":
         db.session.delete(user)
