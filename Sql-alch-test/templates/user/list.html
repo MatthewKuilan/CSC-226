@@ -15,7 +15,7 @@
         {% for user in users %}
             <li>
                 <a href="{{ url_for('user_detail', id=user.id) }}">
-                    {{ user.username }} ({{ user.email }})
+                    {{ user.username }} {{user.choice}}({{ user.email }})
                 </a>
             </li>
         {% endfor %}

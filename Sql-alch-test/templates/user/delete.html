@@ -15,7 +15,7 @@
         <li><strong>Email:</strong> {{ user.email }}</li>
     </ul>
 
-    <form method="POST" action="{{ url_for('delete_user', id=user.id) }}">
+    <form method="POST" action="{{ url_for('user_delete', id=user.id) }}">
         <button type="submit">Yes, Delete</button>
         <a href="{{ url_for('user_detail', id=user.id) }}">Cancel</a>
     </form>
