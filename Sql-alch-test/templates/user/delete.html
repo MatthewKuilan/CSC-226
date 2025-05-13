@@ -13,6 +13,7 @@
         <li><strong>ID:</strong> {{ user.id }}</li>
         <li><strong>Username:</strong> {{ user.username }}</li>
         <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Choices:</strong> {{ user.choice }}</li>
     </ul>
 
     <form method="POST" action="{{ url_for('user_delete', id=user.id) }}">
