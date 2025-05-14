@@ -8,4 +8,4 @@ class User(db.Model):
     email: Mapped[str] = mapped_column(unique=True)
     choice: Mapped[str] =  mapped_column()
     house: Mapped[str] = mapped_column(nullable=True)
-    house_points: Mapped[dict] = mapped_column(nullable=True)
+    house_points: Mapped[str] = mapped_column(nullable=True)
