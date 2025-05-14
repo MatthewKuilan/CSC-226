@@ -7,5 +7,5 @@ class User(db.Model):
     username: Mapped[str] = mapped_column(unique=True)
     email: Mapped[str] = mapped_column(unique=True)
     choice: Mapped[str] =  mapped_column()
-    house: Mapped[str] = mapped_column(nullable=True)
-    house_points: Mapped[str] = mapped_column(nullable=True)
+    """house: Mapped[str] = mapped_column(nullable=True)
+    house_points: Mapped[str] = mapped_column(nullable=True)"""
