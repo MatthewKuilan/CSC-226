@@ -3,7 +3,7 @@ from extensions import db
 from models import User
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///C:/Users/Nikol/Documents/GitHub/CSC-226/Sql-alch-test/instance"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///C:/Users/Nikol/OneDrive/Documents/GitHub/CSC-226/Sql-alch-test/instance/mydb.db"
 
 @app.route("/")
 def home():
