@@ -49,7 +49,7 @@ def save_user_quiz(id):
     try:
         #getting form data then updating user
         wallet_choice=request.form.get("wallet_choice")
-        bulley_choice=request.form.get("bulley_choice")
+        bully_choice=request.form.get("bully_choice")
         challenge_choice=request.form.get("challenge_choice")
         game_choice=request.form.get("game_choice")
         motivation_choice=request.form.get("motivation_choice")
@@ -59,7 +59,7 @@ def save_user_quiz(id):
         if id:
             user = db.get_or_404(User, id)
             user.wallet_choice=wallet_choice
-            user.bulley_choice=bulley_choice
+            user.bully_choice=bully_choice
             user.challenge_choice=challenge_choice
             user.game_choice=game_choice
             user.motivation_choice=motivation_choice

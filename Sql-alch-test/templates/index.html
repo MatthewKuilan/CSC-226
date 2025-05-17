@@ -6,17 +6,13 @@
     <title>Home - User App</title>
 </head>
 <body>
-    <h1>Welcome to the User App</h1>
-    <p>This is the homepage.</p>
-
-    <a href="{{ url_for('create_user') }}">Create a New User</a>
     <div class="container">
         <h1>Welcome to the Hogwarts User App</h1>
         <p>Create an account, take the quiz, and discover your Hogwarts house!</p>
 
         <a href="{{ url_for('create_user') }}" class="btn">Create a New User</a>
         <a href="{{ url_for('user_list') }}" class="btn">View All Users</a>
-        <!--<a href="{{ url_for('quiz_general') }}" class="btn quiz-btn">Take the Sorting Hat Quiz</a>-->
+        
     </div>
 </body>
 </body>
