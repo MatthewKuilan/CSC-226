@@ -6,12 +6,6 @@ function whoami() {
     const motivation = document.querySelector("input[name='motivation-question']:checked");
 
     if (wallet && bully && challenge && game && motivation) {
-        wallet.checked = false;
-        bully.checked = false;
-        challenge.checked = false;
-        game.checked = false;
-        motivation.checked = false;
-
         let house_results = {
             "Hufflepuff": (wallet.value == "wallet-a") + (bully.value == "bully-b") + (challenge.value == "challenge-b") + (game.value == "game-a") + (motivation.value == "motivation-b"),
             "Gryffindor": (wallet.value == "wallet-b") + (bully.value == "bully-a") + (challenge.value == "challenge-a") + (game.value == "game-b") + (motivation.value == "motivation-a"),
@@ -28,18 +22,69 @@ function whoami() {
             }
         }
 
+        // Create form data to submit
+        const formData = new FormData();
+        formData.append('wallet_choice', wallet.value);
+        formData.append('bully_choice', bully.value);
+        formData.append('challenge_choice', challenge.value);
+        formData.append('game_choice', game.value);
+        formData.append('motivation_choice', motivation.value);
+        formData.append('house', house_name);
+        
+        // Reset radio buttons
+        wallet.checked = false;
+        bully.checked = false;
+        challenge.checked = false;
+        game.checked = false;
+        motivation.checked = false;
+
+        // Show result in dialog
         const dialog = document.getElementById("whoami-dialog");
+        dialog.innerHTML = ''; // Clear previous content
+        
         let text = document.createElement('p');
-        text.appendChild(document.createTextNode(`Congrats!!! You are a ${house_name}`));
+        text.appendChild(document.createTextNode('Congrats!!! You are a ${house_name}'));
         dialog.appendChild(text);
 
-        let exit = document.createElement('button');
-        exit.style = "width: 30%; margin-left: 35%; margin-right: 35%"
-        exit.appendChild(document.createTextNode("Ok"));
-        dialog.appendChild(exit);
+        // Add buttons to dialog
+        let saveButton = document.createElement('button');
+        saveButton.style = "width: 45%; margin-right: 5%";
+        saveButton.appendChild(document.createTextNode("Save Result"));
+        saveButton.onclick = function() {
+            // Send data to server
+            fetch('/save_quiz_result', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Your quiz results have been saved!');
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    }
+                } else {
+                    alert('Error saving results: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while saving your results.');
+            });
+            dialog.close();
+        };
+        dialog.appendChild(saveButton);
+
+        let cancelButton = document.createElement('button');
+        cancelButton.style = "width: 45%";
+        cancelButton.appendChild(document.createTextNode("Close"));
+        cancelButton.onclick = function() {
+            dialog.close();
+        };
+        dialog.appendChild(cancelButton);
 
         dialog.showModal();
     } else {
-        // TODO Go to error
+        alert("Please answer all questions to get your result!");
     }
 }

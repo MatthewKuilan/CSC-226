@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from extensions import db
 from models import User
 
@@ -15,6 +15,7 @@ def user_list():
     users = db.session.execute(db.select(User).order_by(User.username)).scalars()
     return render_template('user/list.html', users=users)
 
+#user=User{} is for creating a new user instance not updating one, later I used wallet_choice=wallet_choice because of this
 @app.route("/users/create", methods=["GET", "POST"])
 def create_user():
     if request.method == "POST":
@@ -34,6 +35,45 @@ def create_user():
 def user_detail(id):
     user = db.get_or_404(User, id)
     return render_template("user/detail.html", user=user)
+
+
+# user=user passes the entire user object, id=user.id only passes the id
+@app.route("/quiz/<int:id>")
+def user_quiz(id):
+    user = db.get_or_404(User, id)
+    return render_template("user/quiz.html", id=user.id)
+
+# Can't think of a reason why I'm getting id from form and not just explicitly passing it. 
+@app.route("/save_quiz/<int:id>", methods=["POST"])
+def save_user_quiz(id):    
+    try:
+        #getting form data then updating user
+        wallet_choice=request.form.get("wallet_choice")
+        bulley_choice=request.form.get("bulley_choice")
+        challenge_choice=request.form.get("challenge_choice")
+        game_choice=request.form.get("game_choice")
+        motivation_choice=request.form.get("motivation_choice")
+        house=request.form.get("house_name")
+        id=request.form.get("id")
+        
+        if id:
+            user = db.get_or_404(User, id)
+            user.wallet_choice=wallet_choice
+            user.bulley_choice=bulley_choice
+            user.challenge_choice=challenge_choice
+            user.game_choice=game_choice
+            user.motivation_choice=motivation_choice
+            user.house=house
+
+            db.session.commit()
+            return jsonify({
+                'Success': True,
+                'Message': 'Quiz results saved for existing user!',
+                redirect: url_for("user_detail", id=user.id)
+            })
+    except Exception as e:
+        return jsonify({'Success': False, 'Error': str(e)})
+        
 
 @app.route("/user/<int:id>/delete", methods=["GET", "POST"])
 def user_delete(id):

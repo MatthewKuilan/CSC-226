@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hogwarts House Quiz</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            fieldset {
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            input[type="radio"] {
+                margin-bottom: 10px;
+            }
+            #submit-button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            #submit-button:hover {
+                background-color: #45a049;
+            }
+            dialog {
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+            }
+            dialog p {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            dialog button {
+                padding: 10px;
+                margin: 5px;
+                cursor: pointer;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hogwarts House Sorting Quiz</h1>
+        <p>Answer these questions to find out which Hogwarts house you belong to!</p>
+        
+        <script src="scripts.js"></script>
+        
+        <form id="questions" style="margin-left: 5%; margin-right: 5%;" method="post">
+            <!--
+                Hufflepuff - honest, empathetic
+                Gryffindor - bold, direct
+                Ravenclaw  - logical, cautious
+                Slytherin  - Opportunistic, pragmatic
+            -->
+
+            <dialog id="whoami-dialog">
+            </dialog>
+
+            <fieldset>
+                <legend>Question 1</legend>
+                <label>You find a wallet on the ground with a large sum of money inside. What do you do?</label>
+                <br/>
+                    <input type="radio" id="wallet-choice-a" name="wallet-question" value="wallet-a"/> 
+                    <label for="wallet-choice-a">A. Turn it in immediately</label>
+                    <br/>
+
+                    <input type="radio" id="wallet-choice-b" name="wallet-question" value="wallet-b"/> 
+                    <label for="wallet-choice-b">B. Look for an ID and return it yourself</label>
+                    <br/>
+
+                    <input type="radio" id="wallet-choice-c" name="wallet-question" value="wallet-c"/> 
+                    <label for="wallet-choice-c">C. Consider how best to return it while ensuring your safety</label>
+                    <br/>
+
+                    <input type="radio" id="wallet-choice-d" name="wallet-question" value="wallet-d"/> 
+                    <label for="wallet-choice-d">D. Keep the money</label>
+                    <br/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 2</legend>
+                <label>A student is being bullied. What do you do?</label>
+                <br/>
+                    <input type="radio" id="bully-choice-a" name="bully-question" value="bully-a"/> 
+                    <label for="bully-choice-a">A. Step in and defend them</label>
+                    <br/>
+
+                    <input type="radio" id="bully-choice-b" name="bully-question" value="bully-b"/> 
+                    <label for="bully-choice-b">B. Comfort them and tell a teacher</label>
+                    <br/>
+
+                    <input type="radio" id="bully-choice-c" name="bully-question" value="bully-c"/> 
+                    <label for="bully-choice-c">C. Strategize a long-term way to stop the bullying</label>
+                    <br/>
+
+                    <input type="radio" id="bully-choice-d" name="bully-question" value="bully-d"/> 
+                    <label for="bully-choice-d">D. Use the opportunity to gain influence over the bully or the victim</label>
+                    <br/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 3</legend>
+                <label>You're faced with a difficult challenge. How do you approach it?</label>
+                <br/>
+                    <input type="radio" id="challenge-choice-a" name="challenge-question" value="challenge-a"/> 
+                    <label for="challenge-choice-a">A. Charge in and face it head on</label>
+                    <br/>
+
+                    <input type="radio" id="challenge-choice-b" name="challenge-question" value="challenge-b"/> 
+                    <label for="challenge-choice-b">B. Work steadily and ask for help if needed</label>
+                    <br/>
+
+                    <input type="radio" id="challenge-choice-c" name="challenge-question" value="challenge-c"/> 
+                    <label for="challenge-choice-c">C. Analyze all aspects before acting</label>
+                    <br/>
+
+                    <input type="radio" id="challenge-choice-d" name="challenge-question" value="challenge-d"/> 
+                    <label for="challenge-choice-d">D. Find a clever shortcut to beat them efficently</label>
+                    <br/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 4</legend>
+                <label>If you had to choose, what game (series) would you play?</label>
+                <br/>
+                    <input type="radio" id="game-choice-a" name="game-question" value="game-a"/> 
+                    <label for="game-choice-a">A. Stardew Valley</label> <!-- hufflepuff -->
+                    <br/>
+
+                    <input type="radio" id="game-choice-b" name="game-question" value="game-b"/> 
+                    <label for="game-choice-b">B. Call of Duty</label> <!-- gryffindor -->
+                    <br/>
+
+                    <input type="radio" id="game-choice-c" name="game-question" value="game-c"/> 
+                    <label for="game-choice-c">C. Civilization</label> <!-- ravenclaw -->
+                    <br/>
+
+                    <input type="radio" id="game-choice-d" name="game-question" value="game-d"/> 
+                    <label for="game-choice-d">D. Metal Gear Solid</label> <!-- slytherin -->
+                    <br/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 5</legend>
+                <label>What motivates you the most?</label>
+                <br/>
+                
+                <input type="radio" id="motivation-choice-a" name="motivation-question" value="motivation-a"/> 
+                <label for="motivation-choice-a">A. The chance to prove your bravery</label>
+                <br/>
+
+                <input type="radio" id="motivation-choice-b" name="motivation-question" value="motivation-b"/> 
+                <label for="motivation-choice-b">B. Loyalty and helping others</label>
+                <br/>
+
+                <input type="radio" id="motivation-choice-c" name="motivation-question" value="motivation-c"/> 
+                <label for="motivation-choice-c">C. Gaining knowledge and understanding</label>
+                <br/>
+
+                <input type="radio" id="motivation-choice-d" name="motivation-question" value="motivation-d"/> 
+                <label for="motivation-choice-d">D. Achieving greatness and power</label>
+                <br/>   
+            </fieldset>
+
+            <input type="button" id="submit-button" value="Who am I?" style="width: 30%; margin-left: 35%; margin-top: 20px;" onclick="whoami()"/>
+            
+            <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+        </form>
+    </body>
+</html>

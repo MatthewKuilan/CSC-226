@@ -2,19 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .user-details {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .house-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .hufflepuff {
+            background-color: #F0C75E;
+            color: #372E29;
+        }
+        .gryffindor {
+            background-color: #740001;
+        }
+        .ravenclaw {
+            background-color: #0E1A40;
+        }
+        .slytherin {
+            background-color: #1A472A;
+        }
+        .choices {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #f1f1f1;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
     <h1>User Detail</h1>
     
-    <ul>
-        <li><strong>ID:</strong> {{ user.id }}</li>
-        <li><strong>Username:</strong> {{ user.username }}</li>
-        <li><strong>Email:</strong> {{ user.email }}</li>
-        <li><strong>Choices:</strong> {{ user.choice }}</li>
-    </ul>
+    <div class="user-details">
+        <ul>
+            <li><strong>ID:</strong> {{ user.id }}</li>
+            <li><strong>Username:</strong> {{ user.username }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Choices:</strong> {{ user.choice }}</li>
+            {% if user.house %}
+            <li>
+                <strong>House:</strong> 
+                <span class="house-badge {{ user.house.lower() }}">{{ user.house }}</span>
+            </li>
+            {% endif %}
+        </ul>
+        
+        {% if user.house %}
+        <div class="choices">
+            <h3>Quiz Answers:</h3>
+            <ul>
+                {% if user.wallet_choice %}
+                <li><strong>Wallet scenario:</strong> {{ user.wallet_choice }}</li>
+                {% endif %}
+                
+                {% if user.bully_choice %}
+                <li><strong>Bullying scenario:</strong> {{ user.bully_choice }}</li>
+                {% endif %}
+                
+                {% if user.challenge_choice %}
+                <li><strong>Challenge approach:</strong> {{ user.challenge_choice }}</li>
+                {% endif %}
+                
+                {% if user.game_choice %}
+                <li><strong>Game preference:</strong> {{ user.game_choice }}</li>
+                {% endif %}
+                
+                {% if user.motivation_choice %}
+                <li><strong>Motivation:</strong> {{ user.motivation_choice }}</li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
 
     <a href="{{ url_for('home') }}">Back to Home</a>
-    <a href="{{ url_for('user_delete', id=user.id) }}">Delete an Existing User</a>
+    <a href="{{ url_for('user_list') }}">View All Users</a>
+    <a href="{{ url_for('user_delete', id=user.id) }}">Delete This User</a>
+    {% if not user.house %}
+    <a href="{{ url_for('quiz', user_id=user.id) }}">Take House Quiz</a>
+    {% endif %}
 </body>
 </html>
