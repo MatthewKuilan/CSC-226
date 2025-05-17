@@ -1,3 +1,4 @@
+
 function whoami() {
     const wallet = document.querySelector("input[name='wallet-question']:checked");
     const bully = document.querySelector("input[name='bully-question']:checked");
@@ -29,7 +30,8 @@ function whoami() {
         formData.append('challenge_choice', challenge.value);
         formData.append('game_choice', game.value);
         formData.append('motivation_choice', motivation.value);
-        formData.append('house', house_name);
+        formData.append('house_name', house_name);
+        formData.append('id', window.location.pathname.split('/').pop());
         
         // Reset radio buttons
         wallet.checked = false;
@@ -43,7 +45,7 @@ function whoami() {
         dialog.innerHTML = ''; // Clear previous content
         
         let text = document.createElement('p');
-        text.appendChild(document.createTextNode('Congrats!!! You are a ${house_name}'));
+        text.appendChild(document.createTextNode(`Congrats!!! You are a ${house_name}`));
         dialog.appendChild(text);
 
         // Add buttons to dialog
@@ -52,19 +54,17 @@ function whoami() {
         saveButton.appendChild(document.createTextNode("Save Result"));
         saveButton.onclick = function() {
             // Send data to server
-            fetch('/save_quiz_result', {
+            fetch(`/save_quiz/${formData.get('id')}`, {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
+                if (data.Success) {
                     alert('Your quiz results have been saved!');
-                    if (data.redirect) {
-                        window.location.href = data.redirect;
-                    }
+                    window.location.href = `/user/${formData.get('id')}`;
                 } else {
-                    alert('Error saving results: ' + data.error);
+                    alert('Error saving results: ' + (data.Error || 'Unknown error'));
                 }
             })
             .catch(error => {

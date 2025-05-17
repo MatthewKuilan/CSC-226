@@ -54,7 +54,6 @@ def save_user_quiz(id):
         game_choice=request.form.get("game_choice")
         motivation_choice=request.form.get("motivation_choice")
         house=request.form.get("house_name")
-        id=request.form.get("id")
         
         if id:
             user = db.get_or_404(User, id)

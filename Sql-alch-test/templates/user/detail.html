@@ -107,7 +107,7 @@
     <a href="{{ url_for('user_list') }}">View All Users</a>
     <a href="{{ url_for('user_delete', id=user.id) }}">Delete This User</a>
     {% if not user.house %}
-    <a href="{{ url_for('quiz', user_id=user.id) }}">Take House Quiz</a>
+    <a href="{{ url_for('user_quiz', id=user.id) }}">Take House Quiz</a>
     {% endif %}
 </body>
 </html>

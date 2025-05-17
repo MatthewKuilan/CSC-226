@@ -52,13 +52,34 @@
                 border-radius: 4px;
                 border: 1px solid #ccc;
             }
+            .house-badge {
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 4px;
+                color: white;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .hufflepuff {
+                background-color: #F0C75E;
+                color: #372E29;
+            }
+            .gryffindor {
+                background-color: #740001;
+            }
+            .ravenclaw {
+                background-color: #0E1A40;
+            }
+            .slytherin {
+                background-color: #1A472A;
+            }
         </style>
     </head>
     <body>
         <h1>Hogwarts House Sorting Quiz</h1>
         <p>Answer these questions to find out which Hogwarts house you belong to!</p>
         
-        <script src="scripts.js"></script>
+        <script src="/static/scripts.js"></script>
         
         <form id="questions" style="margin-left: 5%; margin-right: 5%;" method="post">
             <!--
@@ -68,6 +89,7 @@
                 Slytherin  - Opportunistic, pragmatic
             -->
 
+            <input type="hidden" id="user_id" name="id" value="{{ id }}">
             <dialog id="whoami-dialog">
             </dialog>
 
@@ -182,4 +204,4 @@
             <p><a href="{{ url_for('home') }}">Back to Home</a></p>
         </form>
     </body>
-</html>
+</html
