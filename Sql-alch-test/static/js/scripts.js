@@ -1,4 +1,3 @@
-
 function whoami() {
     const wallet = document.querySelector("input[name='wallet-question']:checked");
     const bully = document.querySelector("input[name='bully-question']:checked");
@@ -54,17 +53,22 @@ function whoami() {
         saveButton.appendChild(document.createTextNode("Save Result"));
         saveButton.onclick = function() {
             // Send data to server
-            fetch(`/save_user_quiz/${formData.get('id')}`, {
+            fetch(`/save_quiz/${formData.get('id')}`, {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                if (data.Success) {
+                if (data.success) {
                     alert('Your quiz results have been saved!');
-                    window.location.href = `/user/${formData.get('id')}`;
+                    // Properly handle the redirect using the URL from the server response
+                    if (data.redirect_url) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        window.location.href = `/user/${formData.get('id')}`;
+                    }
                 } else {
-                    alert('Error saving results: ' + (data.Error || 'Unknown error'));
+                    alert('Error saving results: ' + (data.error || 'Unknown error'));
                 }
             })
             .catch(error => {

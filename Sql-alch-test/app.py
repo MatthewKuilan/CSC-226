@@ -66,9 +66,9 @@ def save_user_quiz(id):
 
             db.session.commit()
             return jsonify({
-                'Success': True,
+                'success': True,
                 'Message': 'Quiz results saved for existing user!',
-                redirect: url_for("user_detail", id=user.id)
+                'redirect_url': url_for("user_detail", id=user.id)
             })
     except Exception as e:
         return jsonify({'Success': False, 'Error': str(e)})
