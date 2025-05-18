@@ -54,7 +54,7 @@ function whoami() {
         saveButton.appendChild(document.createTextNode("Save Result"));
         saveButton.onclick = function() {
             // Send data to server
-            fetch(`/save_quiz/${formData.get('id')}`, {
+            fetch(`/save_user_quiz/${formData.get('id')}`, {
                 method: 'POST',
                 body: formData
             })
