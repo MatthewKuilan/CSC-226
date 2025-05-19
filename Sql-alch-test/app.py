@@ -105,6 +105,5 @@ def user_delete(id):
 
 if __name__ == '__main__':
     with app.app_context():
-        print("are we reaching this?")
         db.create_all()
     app.run(debug=True)
