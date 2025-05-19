@@ -7,6 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #2b1035, #1e0f2e);
+            color: #f5f5f5;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
@@ -14,6 +16,8 @@
         h1 {
             text-align: center;
             margin-bottom: 30px;
+            color: #ddb6ff;
+            text-shadow: 1px 1px 4px black;
         }
         .houses-container {
             display: grid;
@@ -24,6 +28,7 @@
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
+            color: #1b1b1b;
         }
         .house-header {
             display: flex;
@@ -50,10 +55,11 @@
         .user-list {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
         .user-item {
             padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #ccc;
         }
         .user-item:last-child {
             border-bottom: none;
@@ -61,6 +67,7 @@
         .user-link {
             text-decoration: none;
             color: inherit;
+            font-weight: bold;
         }
         .user-link:hover {
             text-decoration: underline;
@@ -68,7 +75,7 @@
         .house-count {
             margin-left: 10px;
             font-size: 16px;
-            color: #666;
+            color: #444;
         }
         .nav-links {
             text-align: center;
@@ -78,53 +85,55 @@
             display: inline-block;
             margin: 0 10px;
             padding: 8px 15px;
-            background-color: #f1f1f1;
+            background-color: #4b3069;
             text-decoration: none;
-            color: #333;
+            color: #ddb6ff;
             border-radius: 4px;
+            border: 1px solid #5e4a7b;
         }
         .nav-links a:hover {
-            background-color: #ddd;
+            background-color: #5e4a7b;
         }
-    /* House-specific styles */
-    .gryffindor {
-        background-color: #FDF1F1;
-        border: 2px solid #740001;
-    }
-    .gryffindor .house-crest {
-        background-color: #740001;
-    }
-    
-    .hufflepuff {
-        background-color: #FFFBE9;
-        border: 2px solid #F0C75E;
-    }
-    .hufflepuff .house-crest {
-        background-color: #F0C75E;
-        color: #372E29;
-    }
-    
-    .ravenclaw {
-        background-color: #F1F5FD;
-        border: 2px solid #0E1A40;
-    }
-    .ravenclaw .house-crest {
-        background-color: #0E1A40;
-    }
-    
-    .slytherin {
-        background-color: #F1FDFA;
-        border: 2px solid #1A472A;
-    }
-    .slytherin .house-crest {
-        background-color: #1A472A;
-    }
-    
-    .empty-house {
-        font-style: italic;
-        color: #666;
-    }
-</style>
+
+        /* House-specific styles */
+        .gryffindor {
+            background-color: #fdf1f1;
+            border: 2px solid #740001;
+        }
+        .gryffindor .house-crest {
+            background-color: #740001;
+        }
+
+        .hufflepuff {
+            background-color: #fffbe9;
+            border: 2px solid #f0c75e;
+        }
+        .hufflepuff .house-crest {
+            background-color: #f0c75e;
+            color: #372e29;
+        }
+
+        .ravenclaw {
+            background-color: #f1f5fd;
+            border: 2px solid #0e1a40;
+        }
+        .ravenclaw .house-crest {
+            background-color: #0e1a40;
+        }
+
+        .slytherin {
+            background-color: #f1fdfa;
+            border: 2px solid #1a472a;
+        }
+        .slytherin .house-crest {
+            background-color: #1a472a;
+        }
+
+        .empty-house {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <h1>Hogwarts Houses</h1>
