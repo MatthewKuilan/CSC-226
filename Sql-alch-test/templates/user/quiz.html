@@ -34,7 +34,7 @@
                 cursor: pointer;
             }
             #submit-button:hover {
-                background-color: #45a049;
+                background-color: #fcd116;
             }
             dialog {
                 border-radius: 10px;
@@ -72,6 +72,94 @@
             }
             .slytherin {
                 background-color: #1A472A;
+            }
+        </style>
+        <style>
+            body {
+                font-family: 'Georgia', serif;
+                background: linear-gradient(to bottom, #2b1035, #1e0f2e); /* Purplish gradient */
+                color: #f5f5f5;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            h1, legend {
+                color: #fcd116;
+                text-shadow: 1px 1px 4px black;
+            }
+            fieldset {
+                margin-bottom: 20px;
+                border: 1px solid #5e4a7b;
+                padding: 15px;
+                border-radius: 5px;
+                background-color: #2f1b47;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+        }
+            input[type="radio"] {
+                margin-bottom: 10px;
+            }
+            #submit-button {
+                background-color: #b580f2;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            dialog {
+                background-color: #1d0f2a;
+                color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+                border: 2px solid #ddb6ff;
+            }
+            dialog p {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            dialog button {
+                padding: 10px;
+                margin: 5px;
+                cursor: pointer;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background-color: #2d1a3c;
+                color: #ddb6ff;
+            }
+            .house-badge {
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .hufflepuff {
+                background-color: #f0c75e;
+                color: #372e29;
+            }
+            .gryffindor {
+                background-color: #740001;
+                color: #ffc500;
+            }
+            .ravenclaw {
+                background-color: #0e1a40;
+                color: #b0c4ff;
+            }
+            .slytherin {
+                background-color: #1a472a;
+                color: #c0d8c8;
+            }
+            a {
+                color: #ddb6ff;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
             }
         </style>
         <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
