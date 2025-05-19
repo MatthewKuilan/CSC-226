@@ -105,6 +105,7 @@
 
     <a href="{{ url_for('home') }}">Back to Home</a>
     <a href="{{ url_for('user_list') }}">View All Users</a>
+    <a href="{{ url_for('houses') }}">View Houses</a>
     <a href="{{ url_for('user_delete', id=user.id) }}">Delete This User</a>
     {% if not user.house %}
     <a href="{{ url_for('user_quiz', id=user.id) }}">Take House Quiz</a>

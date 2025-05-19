@@ -73,6 +73,24 @@ def save_user_quiz(id):
     except Exception as e:
         return jsonify({'Success': False, 'Error': str(e)})
         
+@app.route("/houses", methods=["GET"])
+def get_houses():
+    users_with_houses = db.session.execute(
+        db.select(User).where(User.house != None).order_by(User.house, User.username)
+    ).scalars()
+    
+    houses_dict = {
+        "Gryffindor": [],
+        "Hufflepuff": [],
+        "Ravenclaw": [],
+        "Slytherin": []
+    }
+    
+    for user in users_with_houses:
+        if user.house in houses_dict:
+            houses_dict[user.house].append(user)
+    
+    return render_template('houses.html', houses=houses_dict)
 
 @app.route("/user/<int:id>/delete", methods=["GET", "POST"])
 def user_delete(id):

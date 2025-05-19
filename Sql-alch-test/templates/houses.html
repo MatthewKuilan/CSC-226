@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Houses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .houses-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .house {
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .house-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .house-crest {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .house-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .user-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .user-item:last-child {
+            border-bottom: none;
+        }
+        .user-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .user-link:hover {
+            text-decoration: underline;
+        }
+        .house-count {
+            margin-left: 10px;
+            font-size: 16px;
+            color: #666;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 15px;
+            background-color: #f1f1f1;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+        .nav-links a:hover {
+            background-color: #ddd;
+        }
+    /* House-specific styles */
+    .gryffindor {
+        background-color: #FDF1F1;
+        border: 2px solid #740001;
+    }
+    .gryffindor .house-crest {
+        background-color: #740001;
+    }
+    
+    .hufflepuff {
+        background-color: #FFFBE9;
+        border: 2px solid #F0C75E;
+    }
+    .hufflepuff .house-crest {
+        background-color: #F0C75E;
+        color: #372E29;
+    }
+    
+    .ravenclaw {
+        background-color: #F1F5FD;
+        border: 2px solid #0E1A40;
+    }
+    .ravenclaw .house-crest {
+        background-color: #0E1A40;
+    }
+    
+    .slytherin {
+        background-color: #F1FDFA;
+        border: 2px solid #1A472A;
+    }
+    .slytherin .house-crest {
+        background-color: #1A472A;
+    }
+    
+    .empty-house {
+        font-style: italic;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+    <h1>Hogwarts Houses</h1>
+<div class="houses-container">
+    <!-- Gryffindor -->
+    <div class="house gryffindor">
+        <div class="house-header">
+            <div class="house-crest">G</div>
+            <h2 class="house-name">Gryffindor <span class="house-count">({{ houses['Gryffindor']|length }})</span></h2>
+        </div>
+        {% if houses['Gryffindor'] %}
+            <ul class="user-list">
+                {% for user in houses['Gryffindor'] %}
+                    <li class="user-item">
+                        <a href="{{ url_for('user_detail', id=user.id) }}" class="user-link">
+                            {{ user.username }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-house">No users have been sorted into Gryffindor yet.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Hufflepuff -->
+    <div class="house hufflepuff">
+        <div class="house-header">
+            <div class="house-crest">H</div>
+            <h2 class="house-name">Hufflepuff <span class="house-count">({{ houses['Hufflepuff']|length }})</span></h2>
+        </div>
+        {% if houses['Hufflepuff'] %}
+            <ul class="user-list">
+                {% for user in houses['Hufflepuff'] %}
+                    <li class="user-item">
+                        <a href="{{ url_for('user_detail', id=user.id) }}" class="user-link">
+                            {{ user.username }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-house">No users have been sorted into Hufflepuff yet.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Ravenclaw -->
+    <div class="house ravenclaw">
+        <div class="house-header">
+            <div class="house-crest">R</div>
+            <h2 class="house-name">Ravenclaw <span class="house-count">({{ houses['Ravenclaw']|length }})</span></h2>
+        </div>
+        {% if houses['Ravenclaw'] %}
+            <ul class="user-list">
+                {% for user in houses['Ravenclaw'] %}
+                    <li class="user-item">
+                        <a href="{{ url_for('user_detail', id=user.id) }}" class="user-link">
+                            {{ user.username }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-house">No users have been sorted into Ravenclaw yet.</p>
+        {% endif %}
+    </div>
+    
+    <!-- Slytherin -->
+    <div class="house slytherin">
+        <div class="house-header">
+            <div class="house-crest">S</div>
+            <h2 class="house-name">Slytherin <span class="house-count">({{ houses['Slytherin']|length }})</span></h2>
+        </div>
+        {% if houses['Slytherin'] %}
+            <ul class="user-list">
+                {% for user in houses['Slytherin'] %}
+                    <li class="user-item">
+                        <a href="{{ url_for('user_detail', id=user.id) }}" class="user-link">
+                            {{ user.username }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-house">No users have been sorted into Slytherin yet.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="nav-links">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('user_list') }}">All Users</a>
+    <a href="{{ url_for('create_user') }}">Create New User</a>
+</div>
+</body>
+</html>
