@@ -74,7 +74,7 @@ def save_user_quiz(id):
         return jsonify({'Success': False, 'Error': str(e)})
         
 @app.route("/houses", methods=["GET"])
-def get_houses():
+def houses():
     users_with_houses = db.session.execute(
         db.select(User).where(User.house != None).order_by(User.house, User.username)
     ).scalars()
