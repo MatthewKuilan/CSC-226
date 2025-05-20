@@ -58,7 +58,6 @@ function whoami() {
                 body: formData
             })
             .then(response => response.json())
-            alert('after first .then before sencond and .catch')
             .then(data => {
                 alert('Are we making it here')
                 if (data.success) {
