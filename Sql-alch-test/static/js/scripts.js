@@ -57,6 +57,7 @@ function whoami() {
                 method: 'POST',
                 body: formData
             })
+            alert('before first .then')
             .then(response => response.json())
             .then(data => {
                 alert('Are we making it here')
