@@ -59,6 +59,7 @@ function whoami() {
             })
             .then(response => response.json())
             .then(data => {
+                alert('Are we making it here')
                 if (data.success) {
                     alert('Your quiz results have been saved!');
                     // Properly handle the redirect using the URL from the server response
