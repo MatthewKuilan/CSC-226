@@ -1,8 +1,13 @@
 from flask import Flask, request, render_template, redirect
+import sqlite3
 
 app = Flask(__name__)
 filepath = "C:\\Users\\matthew.kuilan\\Documents\\Names.txt"
 
+def db_connection():
+    conn = sqlite3.connect("C:\\Users\\Matthew\\Desktop\\fourthdb.db")
+    conn.row_factory = sqlite3.Row
+    return conn
 
 @app.route('/', methods=["GET"])
 def home():
@@ -11,8 +16,6 @@ def home():
 
 @app.route('/submit', methods=["POST"])
 def submit():
-    # TODO: Get form data from request.form
-    # TODO: Save it to a file (append mode - make sure you are appending to the file, not overwriting the whole thing)
     name = request.form['name']
     email = request.form['email']
     with open(filepath, 'a') as w:
@@ -23,7 +26,6 @@ def submit():
 
 @app.route('/messages', methods=["GET"])
 def messages():
-    # TODO: Read file content and return as plain text or HTML
     with open(filepath, 'r') as r:
         string = r.read()
     return f"<pre>{string}</pre>"
